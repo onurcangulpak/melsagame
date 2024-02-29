@@ -1,10 +1,10 @@
 class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = 1000;
+    this.left = 1080;
     this.bottom = 10;
     this.width = 70;
-    this.height = 100;
+    this.height = 70;
     this.element = document.createElement("img");
 
     this.element.src = "../images/zuko.png";

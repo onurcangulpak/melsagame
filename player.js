@@ -9,7 +9,7 @@ class Player {
     this.element = document.createElement("img");
     this.jumpSpeedX = 0; // Horizontal jump speed
     this.jumpSpeedY = 0; // Vertical jump speed
-    this.gravity = 0.6; // Gravity value
+    this.gravity = 0.2; // Gravity value
     this.isJumping = false; // Jumping state
     // Set other necessary properties as needed
 
@@ -29,7 +29,7 @@ class Player {
   jump() {
     if (!this.isJumping) {
       this.isJumping = true;
-      this.jumpSpeedY = 15; // Set vertical jump speed
+      this.jumpSpeedY = 11; // Set vertical jump speed
     }
   }
 
@@ -57,14 +57,26 @@ class Player {
       }
     }
 
-   /// new code 
+    /// new code
 
     // Update player position
     this.updatePosition();
   }
 
   // Method to handle collision detection with obstacles
-  didCollide(obstacles) {
-    // Implement collision detection logic here if needed
+  didCollide(obstacle) {
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

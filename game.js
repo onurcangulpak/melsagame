@@ -49,12 +49,28 @@ class Game {
       clearInterval(this.gameIntervalId);
     }
   }
-
   update() {
-    //console.log("in the update");
     this.player.move();
-    this.obstacle.forEach((zukoZuko) => {
+    this.obstacle.forEach((zukoZuko, index) => {
       zukoZuko.move();
+      if (zukoZuko.left < 185) {
+        // Check for collision
+        if (!this.player.didCollide(zukoZuko)) {
+          // If no collision, increment the score
+          console.log("the score is");
+          this.score++;
+        }
+
+        // Remove the obstacle from the array and the DOM
+        this.obstacle.splice(index, 1);
+        zukoZuko.element.remove();
+
+        // Add a new obstacle
+        this.obstacle.push(new Obstacle(this.gameScreen));
+      }
+      if (this.player.didCollide(zukoZuko)) {
+        console.log("bang!");
+      }
     });
   }
 }
