@@ -14,7 +14,7 @@ class Game {
     //gameScreen, left, bottom, width, height, imgSrc
     this.height = 450;
     this.width = 1080;
-    this.obstacles = [];
+    this.obstacle = [new Obstacle(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -53,5 +53,8 @@ class Game {
   update() {
     //console.log("in the update");
     this.player.move();
+    this.obstacle.forEach((zukoZuko) => {
+      zukoZuko.move();
+    });
   }
 }

@@ -59,7 +59,6 @@ class Player {
 
    /// new code 
 
-/// asdasd 
     // Update player position
     this.updatePosition();
   }
