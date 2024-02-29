@@ -3,10 +3,17 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.player = new Player(this.gameScreen,100,10,100,200,'../images/plyr.png');
+    this.player = new Player(
+      this.gameScreen,
+      100,
+      10,
+      100,
+      200,
+      "../images/avatar.png"
+    );
     //gameScreen, left, bottom, width, height, imgSrc
-    this.height = 350;
-    this.width = 950;
+    this.height = 450;
+    this.width = 1080;
     this.obstacles = [];
     this.score = 0;
     this.lives = 3;
@@ -45,6 +52,6 @@ class Game {
 
   update() {
     //console.log("in the update");
-    this.player.move()
+    this.player.move();
   }
 }

@@ -15,32 +15,57 @@ class Player {
     this.element.style.bottom = `${bottom}px`;
 
     this.gameScreen.appendChild(this.element);
+
+    // Jump parameters
+    this.jumpStrength = 18; // Zıplamanın yüksekliği
+    this.jumpSpeed = 1.5; // Zıplama hızı
+    this.gravity = 0.6; // Yerçekimi
+    this.fallSpeed = -1; // Düşme hızı
+    this.isJumping = false; // Zıplama durumunu takip eder
   }
 
-  move() {
-    this.left += this.directionX;
-    this.top += this.directionY;
-    this.updatePosition();
-  }
-  didCollide(obstacles) {
-    const playerRect = this.element.getBoundingClientRect();
-    const obstacleRect = obstacle.element.getBoundingClientRect();
+  jump() {
+    if (!this.isJumping) {
+      this.isJumping = true;
+      const initialBottom = this.bottom;
+      let jumpHeight = 0;
 
-    if (
-      playerRect.left < obstacleRect.right &&
-      playerRect.right > obstacleRect.left &&
-      playerRect.top < obstacleRect.bottom &&
-      playerRect.bottom > obstacleRect.top
-    ) {
-      console.log("Crash!");
+      const jumpInterval = setInterval(() => {
+        jumpHeight += this.jumpSpeed;
+        this.bottom +=
+          this.jumpSpeed * this.jumpStrength - this.gravity * jumpHeight;
+        this.updatePosition();
 
-      return true;
-    } else {
-      return false;
+        if (jumpHeight >= this.jumpStrength / this.jumpSpeed) {
+          clearInterval(jumpInterval);
+
+          const fallInterval = setInterval(() => {
+            this.bottom -= this.fallSpeed; // Düşme hızını kullan
+            this.fallSpeed += this.gravity; // Düşme hızını artır
+            this.updatePosition();
+
+            if (this.bottom <= initialBottom) {
+              clearInterval(fallInterval);
+              this.bottom = initialBottom;
+              this.isJumping = false;
+              this.fallSpeed = 5; // Düşme hızını sıfırla
+              this.updatePosition();
+            }
+          }, 16);
+        }
+      }, 16);
     }
   }
+  // ... HERSEY CALISIYOR
+  move() {
+    // Implement the movement logic here if needed
+  }
+
+  didCollide(obstacles) {
+    // Implement collision detection logic here if needed
+  }
+
   updatePosition() {
-    this.element.style.left = `${this.left}px`;
-    this.element.style.top = `${this.top}px`;
+    this.element.style.bottom = `${this.bottom}px`;
   }
 }
