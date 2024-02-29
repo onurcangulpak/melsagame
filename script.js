@@ -6,6 +6,11 @@ window.onload = function () {
   startButton.addEventListener("click", function () {
     startGame();
   });
+  restartButton.addEventListener("click", () => {
+    console.log("restart clicked");
+
+    game.restart();
+  });
 
   // Event listener for keydown event
   document.addEventListener("keydown", function (event) {

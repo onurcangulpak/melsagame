@@ -1,15 +1,16 @@
 class Player {
-  constructor(gameScreen, left, bottom, width, height, imgSrc) {
+  constructor(gameScreen, left, bottom, width, height, imgSrc,right) {
     // Initialize properties
     this.gameScreen = gameScreen;
     this.left = left;
     this.bottom = bottom;
     this.width = width;
     this.height = height;
+    this.right = right;
     this.element = document.createElement("img");
     this.jumpSpeedX = 0; // Horizontal jump speed
     this.jumpSpeedY = 0; // Vertical jump speed
-    this.gravity = 0.2; // Gravity value
+    this.gravity = 0.35; // Gravity value
     this.isJumping = false; // Jumping state
     // Set other necessary properties as needed
 
@@ -29,7 +30,7 @@ class Player {
   jump() {
     if (!this.isJumping) {
       this.isJumping = true;
-      this.jumpSpeedY = 11; // Set vertical jump speed
+      this.jumpSpeedY = 14; // Set vertical jump speed
     }
   }
 

@@ -3,6 +3,8 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+    this.scoreBoard = document.getElementById("score");
+    this.livesElement = document.getElementById("lives");
     this.player = new Player(
       this.gameScreen,
       100,
@@ -16,7 +18,7 @@ class Game {
     this.width = 1080;
     this.obstacle = [new Obstacle(this.gameScreen)];
     this.score = 0;
-    this.lives = 3;
+    this.lives = 1;
     this.gameIsOver = false;
     this.gameIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60); // 60fps
@@ -38,6 +40,18 @@ class Game {
       this.gameLoop();
     }, this.gameLoopFrequency);
   }
+  restart() {
+    console.log("calisiyor restart");
+    this.gameIsOver = false;
+    this.score = 0;
+    this.lives = 1;
+    this.gameEndScreen.style.display = "none";
+    this.gameScreen.style.display = "block";
+    this.obstacle.push(new Obstacle(this.gameScreen));
+    this.start();
+    this.livesElement.innerText = this.lives;
+    this.scoreElement.innerText = this.score;
+  }
 
   gameLoop() {
     //console.log("in the game loop");
@@ -47,30 +61,43 @@ class Game {
     // If "gameIsOver" is set to "true" clear the interval to stop the loop
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId);
+      this.gameOver();
     }
   }
   update() {
     this.player.move();
     this.obstacle.forEach((zukoZuko, index) => {
       zukoZuko.move();
-      if (zukoZuko.left < 185) {
-        // Check for collision
-        if (!this.player.didCollide(zukoZuko)) {
-          // If no collision, increment the score
-          console.log("the score is");
-          this.score++;
-        }
-
-        // Remove the obstacle from the array and the DOM
+      if (zukoZuko.left < 0) {
         this.obstacle.splice(index, 1);
         zukoZuko.element.remove();
-
-        // Add a new obstacle
         this.obstacle.push(new Obstacle(this.gameScreen));
+        // update score
+        this.score++;
+        this.scoreBoard.innerText = this.score;
       }
-      if (this.player.didCollide(zukoZuko)) {
+
+      //collision
+      if (this.player.didCollide(zukoZuko, index)) {
         console.log("bang!");
+        this.obstacle.splice(index, 1);
+        zukoZuko.element.remove();
+        this.obstacle.push(new Obstacle(this.gameScreen));
+        this.lives--;
+        this.livesElement.innerText = this.lives;
+
+        //checking the lives
+        if (this.lives === 0) {
+          this.gameIsOver = true;
+        }
       }
     });
+  }
+  gameOver() {
+    console.log(" game is over ");
+
+    this.gameScreen.style.display = "none";
+
+    this.gameEndScreen.style.display = "block";
   }
 }
