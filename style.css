@@ -1,74 +1,80 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* scrooll off */
+  overflow: hidden;
+  font-family: Arial, sans-serif; /* Varsayılan bir font kullanabilirsiniz */
+  background-color: #f0f0f0; /* Arka plan rengi */
+}
+
+main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 
-#game-intro {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#game-intro,
+#game-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#game-intro button,
+#restart-button {
+  font-size: 18px;
+  background-color: #4caf50; /* Buton arka plan rengi */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Buton üzerine gelindiğinde geçiş efekti */
+}
+
+#game-intro button:hover,
+#restart-button:hover {
+  background-color: #45a049; /* Butonun üzerine gelindiğindeki arka plan rengi */
 }
 
 #game-container {
   display: flex;
-  width: 100vw;
-  padding: 20px 0px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #game-screen {
-  display: none;
-  align-content: center;
-  padding: 20px 0px;
-  overflow: hidden;
-  position: relative;
-  background-image: url(/images/PNG/game_background_1/layers/sky.png);
+  width: 100%; /* Oyun ekranının genişliğini ayarlar */
+  max-width: 1080px; /* Maksimum genişlik */
+  height: 450px; /* Oyun ekranının yüksekliği */
+  background-image: url("background.jpg"); /* Arka plan resmi */
   background-size: cover;
-  animation: slide 5s linear infinite;
-}
-@keyframes slide {
-  0% {
-    background-position: -100% 0;
-  }
-  95% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0px 0;
-  }
-}
-
-#game-end {
-  display: none;
-  
-}
-
-.game-intro p {
-  font-size: 18px;
-  font-family: "Verdana";
-}
-
-.logo-img {
-  width: 350px;
-}
-
-.arrows-img {
-  width: 150px;
-}
-
-body button {
-  font-size: 30px;
-  background-color: #870007;
-  color: #fff;
-  padding: 20px 40px;
-  border: 0;
-  box-shadow: 0;
-  border-radius: 5px;
+  background-position: center;
+  position: relative;
   margin-bottom: 20px;
+}
+
+.stats {
+  text-align: center;
+}
+
+.stats h2 {
+  margin-bottom: 10px;
+}
+
+.stats p {
+  margin: 5px 0;
+}
+
+.stats span {
+  font-weight: bold;
+}
+
+.game-over-text {
+  font-size: 24px;
+  font-weight: bold;
 }

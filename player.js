@@ -32,6 +32,7 @@ class Player {
       this.isJumping = true;
       this.jumpSpeedY = 14; // Set vertical jump speed
     }
+    
   }
 
   // Method to update player position

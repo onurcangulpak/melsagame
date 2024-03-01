@@ -2,9 +2,9 @@ class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
     this.left = 1080;
-    this.bottom = 10;
+    this.bottom = 7;
     this.width = 70;
-    this.height = 70;
+    this.height = 100;
     this.element = document.createElement("img");
 
     this.element.src = "../images/zuko.png";
@@ -21,6 +21,7 @@ class Obstacle {
   move() {
     this.left -= 4;
     this.updatePosition();
+  
   }
 
   updatePosition() {

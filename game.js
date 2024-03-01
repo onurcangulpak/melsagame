@@ -47,10 +47,10 @@ class Game {
     this.lives = 1;
     this.gameEndScreen.style.display = "none";
     this.gameScreen.style.display = "block";
-    this.obstacle.push(new Obstacle(this.gameScreen));
+
     this.start();
     this.livesElement.innerText = this.lives;
-    this.scoreElement.innerText = this.score;
+    this.scoreBoard.innerText = this.score;
   }
 
   gameLoop() {
@@ -90,6 +90,10 @@ class Game {
         if (this.lives === 0) {
           this.gameIsOver = true;
         }
+      }
+      if (this.score % 3 === 0) {
+        console.log("here");
+        this.zukoZuko += 0.4;
       }
     });
   }
