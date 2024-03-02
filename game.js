@@ -25,17 +25,17 @@ class Game {
   }
 
   start() {
-    // Set the height and width of the game screen
+    // height width -> game screen
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
 
-    // Hide the start screen
+    // Hide start screen
     this.startScreen.style.display = "none";
 
-    // Show the game screen
+    // Show game screen
     this.gameScreen.style.display = "block";
 
-    // Runs the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
+    // 60fps
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrequency);
@@ -54,11 +54,11 @@ class Game {
   }
 
   gameLoop() {
-    //console.log("in the game loop");
+    //console.log("oyunda");
 
     this.update();
 
-    // If "gameIsOver" is set to "true" clear the interval to stop the loop
+    // If gameisover true clear interval
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId);
       this.gameOver();

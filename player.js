@@ -1,6 +1,6 @@
 class Player {
   constructor(gameScreen, left, bottom, width, height, imgSrc,right) {
-    // Initialize properties
+
     this.gameScreen = gameScreen;
     this.left = left;
     this.bottom = bottom;
@@ -8,13 +8,13 @@ class Player {
     this.height = height;
     this.right = right;
     this.element = document.createElement("img");
-    this.jumpSpeedX = 0; // Horizontal jump speed
-    this.jumpSpeedY = 0; // Vertical jump speed
-    this.gravity = 0.35; // Gravity value
-    this.isJumping = false; // Jumping state
-    // Set other necessary properties as needed
+    this.jumpSpeedX = 0; // Horizontal  speed
+    this.jumpSpeedY = 0; // Vertical  speed
+    this.gravity = 0.35; // Gravity 
+    this.isJumping = false; // Jumping 
+    
 
-    // Configure player element
+   
     this.element.src = imgSrc;
     this.element.style.position = "absolute";
     this.element.style.width = `${width}px`;
@@ -22,34 +22,34 @@ class Player {
     this.element.style.left = `${left}px`;
     this.element.style.bottom = `${bottom}px`;
 
-    // Append player element to the game screen
+    
     this.gameScreen.appendChild(this.element);
   }
 
-  // Method to handle player jump
+  // player jump
   jump() {
     if (!this.isJumping) {
       this.isJumping = true;
-      this.jumpSpeedY = 14; // Set vertical jump speed
+      this.jumpSpeedY = 14; //  vertical speed
     }
     
   }
 
-  // Method to update player position
+  
   updatePosition() {
-    // Update player's position on the screen
+    // Update players position 
     this.element.style.left = `${this.left}px`;
     this.element.style.bottom = `${this.bottom}px`;
   }
 
   // Method to handle player movement
   move() {
-    // Implement player movement logic here if needed
-    // Example:
-    this.left += this.jumpSpeedX; // Update horizontal position
-    this.bottom += this.jumpSpeedY; // Update vertical position
+    // 
 
-    // Apply gravity to the vertical jump speed
+    this.left += this.jumpSpeedX; //  h
+    this.bottom += this.jumpSpeedY; // v
+
+    //  vertical jump speed
     if (this.isJumping) {
       this.jumpSpeedY -= this.gravity;
       if (this.bottom <= 0) {
@@ -59,13 +59,12 @@ class Player {
       }
     }
 
-    /// new code
 
     // Update player position
     this.updatePosition();
   }
 
-  // Method to handle collision detection with obstacles
+  // collision detection with obstacles
   didCollide(obstacle) {
     const playerRect = this.element.getBoundingClientRect();
     const obstacleRect = obstacle.element.getBoundingClientRect();

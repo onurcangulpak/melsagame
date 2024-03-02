@@ -12,11 +12,11 @@ window.onload = function () {
     game.restart();
   });
 
-  // Event listener for keydown event
+  // Event listener 
   document.addEventListener("keydown", function (event) {
     if (event.key === " ") {
-      // Check if space bar is pressed
-      game.player.jump(); // Trigger jump action for the player
+      // Check if spaces pressed
+      game.player.jump(); // Trigger jump of player
     }
   });
 
@@ -26,6 +26,4 @@ window.onload = function () {
   }
 };
 
-///////////////// GELIYORUZ///////////////// GELIYORUZ///////////////// GELIYORUZ///////////////// GELIYORUZ
-///////////////// GELIYORUZ///////////////// GELIYORUZ
-///////////////// GELIYORUZ
+

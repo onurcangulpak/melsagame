@@ -9,10 +9,10 @@ class Obstacle {
 
     this.element.src = "../images/zuko.png";
     this.element.style.position = "absolute";
-    this.element.style.width = `${this.width}px`; // "this.width" olarak güncellendi
-    this.element.style.height = `${this.height}px`; // "this.height" olarak güncellendi
-    this.element.style.left = `${this.left}px`; // "this.left" olarak güncellendi
-    this.element.style.bottom = `${this.bottom}px`; // "this.bottom" olarak güncellendi
+    this.element.style.width = `${this.width}px`;  
+    this.element.style.height = `${this.height}px`; 
+    this.element.style.left = `${this.left}px`; 
+    this.element.style.bottom = `${this.bottom}px`; 
 
     // Append obstacle element to the game screen
     this.gameScreen.appendChild(this.element);

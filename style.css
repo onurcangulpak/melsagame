@@ -2,79 +2,146 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: Arial, sans-serif; /* Varsayılan bir font kullanabilirsiniz */
-  background-color: #f0f0f0; /* Arka plan rengi */
-}
-
-main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-#game-intro,
-#game-end {
+#game-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#game-intro button,
-#restart-button {
-  font-size: 18px;
-  background-color: #4caf50; /* Buton arka plan rengi */
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Buton üzerine gelindiğinde geçiş efekti */
-}
-
-#game-intro button:hover,
-#restart-button:hover {
-  background-color: #45a049; /* Butonun üzerine gelindiğindeki arka plan rengi */
+  align-items: center;
 }
 
 #game-container {
   display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+  position: relative;
+}
+
+#background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(/images/PNG/game_background_1/layers/sky.png);
+  background-size: cover;
+  animation: slide 5s linear infinite;
+  z-index: 1;
+}
+@keyframes slide {
+  0% {
+    background-position: -100% 0;
+  }
+  95% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0px 0;
+  }
+}
+
+#game-end {
+  display: none;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+body button {
+  font-size: 30px;
+  background-color: #3a94c6;
+  color: #fff;
+  padding: 20px 100px;
+  border: 0;
+  box-shadow: 1;
+  border-radius: 20px;
+  margin-bottom: -500px;
+
+  position: fixed;
+  z-index: 1;
+}
+#restart-button {
+  font-size: 30px;
+  background-color: #3a94c6;
+  color: #fff;
+  padding: 10px 80px;
+  border: 0;
+  box-shadow: 1;
+  position: fixed;
+  border-radius: 20px;
+  margin-bottom: -500px;
+  margin-left: 500px;
+}
+
+#stats {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Arial", sans-serif;
+  position: fixed;
+  top: 20px; 
+  right: 20px; 
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#game-screen {
-  width: 100%; /* Oyun ekranının genişliğini ayarlar */
-  max-width: 1080px; /* Maksimum genişlik */
-  height: 450px; /* Oyun ekranının yüksekliği */
-  background-image: url("background.jpg"); /* Arka plan resmi */
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.stats {
+#stats h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.stats h2 {
+.stat {
   margin-bottom: 10px;
 }
 
-.stats p {
-  margin: 5px 0;
-}
-
-.stats span {
+.label {
   font-weight: bold;
+  color: #ffcc00;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
-.game-over-text {
-  font-size: 24px;
+.value {
+  color: #00ffcc;
+  font-size: 16px;
   font-weight: bold;
 }
