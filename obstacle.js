@@ -7,12 +7,12 @@ class Obstacle {
     this.height = 100;
     this.element = document.createElement("img");
 
-    this.element.src = "images/zuko.png";
+    this.element.src = "./images/zuko.png";
     this.element.style.position = "absolute";
-    this.element.style.width = `${this.width}px`;  
-    this.element.style.height = `${this.height}px`; 
-    this.element.style.left = `${this.left}px`; 
-    this.element.style.bottom = `${this.bottom}px`; 
+    this.element.style.width = `${this.width}px`;
+    this.element.style.height = `${this.height}px`;
+    this.element.style.left = `${this.left}px`;
+    this.element.style.bottom = `${this.bottom}px`;
 
     // Append obstacle element to the game screen
     this.gameScreen.appendChild(this.element);
@@ -21,7 +21,6 @@ class Obstacle {
   move() {
     this.left -= 4;
     this.updatePosition();
-  
   }
 
   updatePosition() {

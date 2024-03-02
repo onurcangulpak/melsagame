@@ -11,7 +11,7 @@ class Game {
       10,
       100,
       200,
-      "images/avatar.png"
+      "./images/avatar.png"
     );
     //gameScreen, left, bottom, width, height, imgSrc
     this.height = 450;
